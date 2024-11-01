@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            pad: 0px;
+        }
+        body{
+            background-color: pink;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+        }/*该元素和父级元素同时设置宽高才会显示效果*/
+        .heart{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            position: absolute;
+            transform: rotate(45deg);/*旋转45°*/
+            animation: heartbit 1s infinite alternate ;
+        }
+        .heart::before{
+            content: "";
+            width: 300px;
+            height: 150px;
+            background-color: red;
+            position: absolute;
+            top: -149px;/*写149而不是150是为了去除图形之间的间隙*/
+            border-radius: 150px 150px 0px 0px;
+        }/*::before是伪类，在该元素前面插入一个新的该元素*/
+        .heart::after{
+            content: "";
+            width: 150px;
+            height: 300px;
+            background-color:red ;
+            position: absolute;
+            left: -149px;
+            border-radius: 150px 0px 0px 150px;
+        }/*：：after是伪类，在该元素后面插入一个新的该元素*/
+        @keyframes heartbit{
+            0%{
+                transform:scale(0.6) rotate(45deg);
+        }
+            100%{
+                transform: scale(1.2) rotate(45deg);
+            }
+    }/*动画内容*/
+    </style>
+</head>
+<body>
+    <div class="heart"></div>
+</body>
+</html>
